@@ -1,0 +1,227 @@
+[gd_scene load_steps=21 format=3 uid="uid://1mgxoui70qn2"]
+
+[ext_resource type="Script" path="res://Scripts/Letter.gd" id="1_e0r41"]
+[ext_resource type="Script" path="res://Scripts/Word.gd" id="2_icr1n"]
+[ext_resource type="Script" path="res://Scripts/Hangman.gd" id="4_d8x81"]
+[ext_resource type="Texture2D" uid="uid://remhsx1mcymb" path="res://Images/LewaPodpora.png" id="5_7n6xg"]
+[ext_resource type="Texture2D" uid="uid://dfswvty1tlnhl" path="res://Images/PrawaPodpora.png" id="6_1dyx4"]
+[ext_resource type="Texture2D" uid="uid://d0a6pim8caj44" path="res://Images/Slup.png" id="7_qs80t"]
+[ext_resource type="Texture2D" uid="uid://b5i7u4dlj71gk" path="res://Images/GoraCzesc.png" id="8_uhafy"]
+[ext_resource type="Texture2D" uid="uid://ceiqtlvavgxil" path="res://Images/Krzywa.png" id="9_oa8ha"]
+[ext_resource type="Texture2D" uid="uid://btr4ve5xy4slv" path="res://Images/Kreska.png" id="10_658r8"]
+[ext_resource type="Texture2D" uid="uid://cvdvk461ya5gk" path="res://Images/Glowa.png" id="11_di5ue"]
+[ext_resource type="Texture2D" uid="uid://875auicuwx53" path="res://Images/Tulow.png" id="12_wk446"]
+[ext_resource type="Texture2D" uid="uid://bg5dc6ydm6rub" path="res://Images/LewaReka.png" id="13_tvt01"]
+[ext_resource type="Texture2D" uid="uid://epc5bhalar17" path="res://Images/PrawaReka.png" id="14_7t8tr"]
+[ext_resource type="Texture2D" uid="uid://0ugox76cl56d" path="res://Images/LewaNoga.png" id="15_aibjb"]
+[ext_resource type="Texture2D" uid="uid://df2uy8qktfhg2" path="res://Images/PrawaNoga.png" id="16_evbpk"]
+[ext_resource type="Script" path="res://Scripts/End.gd" id="16_ssx8u"]
+[ext_resource type="Script" path="res://Scripts/Shop.gd" id="17_w2r7t"]
+[ext_resource type="Script" path="res://Scripts/Money.gd" id="18_12cql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxsuc"]
+size = Vector2(1146, 8)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_nxn8r"]
+
+[node name="World" type="Node2D"]
+
+[node name="Letter" type="Node2D" parent="."]
+script = ExtResource("1_e0r41")
+
+[node name="LetterBox" type="TextEdit" parent="Letter"]
+offset_left = 63.0
+offset_top = 48.0
+offset_right = 137.0
+offset_bottom = 117.0
+
+[node name="LetterLabel" type="Label" parent="Letter"]
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 188.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 20
+text = "Wprowadź literkę"
+
+[node name="LetterButton" type="Button" parent="Letter"]
+offset_left = 52.0
+offset_top = 124.0
+offset_right = 146.0
+offset_bottom = 155.0
+text = "Zatwierdź"
+
+[node name="UsedLettersLabel" type="Label" parent="Letter"]
+offset_left = 34.0
+offset_top = 225.0
+offset_right = 1134.0
+offset_bottom = 271.0
+theme_override_font_sizes/font_size = 20
+
+[node name="Word" type="Node2D" parent="."]
+script = ExtResource("2_icr1n")
+
+[node name="Hangman" type="Node2D" parent="."]
+position = Vector2(1023, 488)
+scale = Vector2(1.46564, 1.46564)
+script = ExtResource("4_d8x81")
+metadata/_edit_group_ = true
+
+[node name="LeftStand" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("5_7n6xg")
+
+[node name="RightStand" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("6_1dyx4")
+
+[node name="Column" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("7_qs80t")
+
+[node name="Top" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("8_uhafy")
+
+[node name="Curve" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("9_oa8ha")
+
+[node name="Line" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("10_658r8")
+
+[node name="Head" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("11_di5ue")
+
+[node name="Body" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("12_wk446")
+
+[node name="LeftHand" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("13_tvt01")
+
+[node name="RightHand" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("14_7t8tr")
+
+[node name="LeftLeg" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("15_aibjb")
+
+[node name="RightLeg" type="Sprite2D" parent="Hangman"]
+visible = false
+texture = ExtResource("16_evbpk")
+
+[node name="End" type="Node2D" parent="."]
+script = ExtResource("16_ssx8u")
+
+[node name="EndLabel" type="Label" parent="End"]
+offset_left = 412.0
+offset_top = 279.0
+offset_right = 737.0
+offset_bottom = 317.0
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="End"]
+offset_left = 453.0
+offset_top = 355.0
+offset_right = 710.0
+offset_bottom = 405.0
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[node name="Floor" type="Area2D" parent="."]
+
+[node name="Area2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(582, 686)
+shape = SubResource("RectangleShape2D_nxsuc")
+
+[node name="Shop" type="Node2D" parent="."]
+script = ExtResource("17_w2r7t")
+
+[node name="ShopButton" type="Button" parent="Shop"]
+offset_left = 1080.0
+offset_top = 72.0
+offset_right = 1150.0
+offset_bottom = 103.0
+text = "Sklep"
+
+[node name="BackButton" type="Button" parent="Shop"]
+visible = false
+offset_left = 387.0
+offset_top = 105.0
+offset_right = 452.0
+offset_bottom = 136.0
+text = "Back"
+
+[node name="ItemList" type="Node2D" parent="Shop"]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="Shop/ItemList"]
+modulate = Color(0.564706, 0.564706, 0.564706, 0.431373)
+position = Vector2(595, 346)
+scale = Vector2(425, 489)
+texture = SubResource("CanvasTexture_nxn8r")
+
+[node name="RandomLetter" type="Label" parent="Shop/ItemList"]
+offset_left = 401.0
+offset_top = 155.0
+offset_right = 612.0
+offset_bottom = 183.0
+text = "Ujawnienie losowej literki"
+
+[node name="Price" type="Label" parent="Shop/ItemList/RandomLetter"]
+layout_mode = 0
+offset_left = 265.0
+offset_right = 306.0
+offset_bottom = 23.0
+
+[node name="RLBuyButton" type="Button" parent="Shop/ItemList/RandomLetter"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = -5.0
+offset_right = 393.0
+offset_bottom = 26.0
+text = "KUP"
+
+[node name="ExtraLife" type="Label" parent="Shop/ItemList"]
+offset_left = 400.0
+offset_top = 208.0
+offset_right = 599.0
+offset_bottom = 246.0
+text = "Dodatkowe życie"
+
+[node name="Price" type="Label" parent="Shop/ItemList/ExtraLife"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 4.0
+offset_right = 301.0
+offset_bottom = 27.0
+
+[node name="ELBuyButton" type="Button" parent="Shop/ItemList/ExtraLife"]
+layout_mode = 0
+offset_left = 346.0
+offset_top = -4.0
+offset_right = 395.0
+offset_bottom = 27.0
+text = "KUP"
+
+[node name="Money" type="Node2D" parent="."]
+script = ExtResource("18_12cql")
+
+[node name="MoneyLabel" type="Label" parent="Money"]
+offset_left = 988.0
+offset_top = 4.0
+offset_right = 1149.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 20
+
+[connection signal="text_changed" from="Letter/LetterBox" to="Letter" method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="End/RestartButton" to="End" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Shop/ShopButton" to="Shop" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Shop/BackButton" to="Shop" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Shop/ItemList/RandomLetter/RLBuyButton" to="Shop" method="_on_rl_buy_button_pressed"]
+[connection signal="pressed" from="Shop/ItemList/ExtraLife/ELBuyButton" to="Shop" method="_on_el_buy_button_pressed"]

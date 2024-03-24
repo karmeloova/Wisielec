@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbjds83t83nom"]
+
+[ext_resource type="Script" path="res://Scripts/Buttons.gd" id="1_a7f8v"]
+
+[node name="StartScreen" type="Node2D"]
+
+[node name="Buttons" type="Node2D" parent="."]
+script = ExtResource("1_a7f8v")
+
+[node name="StartButton" type="Button" parent="Buttons"]
+offset_left = 459.0
+offset_top = 158.0
+offset_right = 641.0
+offset_bottom = 200.0
+text = "Start"
+
+[node name="DifficultyLevel" type="OptionButton" parent="Buttons"]
+offset_left = 459.0
+offset_top = 254.0
+offset_right = 642.0
+offset_bottom = 294.0
+
+[connection signal="pressed" from="Buttons/StartButton" to="Buttons" method="_on_start_button_pressed"]
+[connection signal="item_selected" from="Buttons/DifficultyLevel" to="Buttons" method="_on_difficulty_level_item_selected"]

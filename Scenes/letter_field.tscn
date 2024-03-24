@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://tnpci1j4rm68"]
+
+[sub_resource type="GDScript" id="GDScript_1l5cc"]
+script/source = "extends Node2D
+@onready var letter_text = get_node(\"Letter\")
+
+# Called when the node enters the scene tree for the first time.
+"
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1hm05"]
+
+[node name="LetterField" type="Node2D"]
+script = SubResource("GDScript_1l5cc")
+metadata/_edit_group_ = true
+
+[node name="Line" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(19.3111, 66.3863)
+scale = Vector2(-37.6222, 2.65723)
+texture = SubResource("CanvasTexture_1hm05")
+
+[node name="Letter" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 15.0
+offset_right = 38.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
