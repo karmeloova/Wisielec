@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://1mgxoui70qn2"]
+[gd_scene load_steps=22 format=3 uid="uid://1mgxoui70qn2"]
 
 [ext_resource type="Script" path="res://Scripts/Letter.gd" id="1_e0r41"]
 [ext_resource type="Script" path="res://Scripts/Word.gd" id="2_icr1n"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Scripts/End.gd" id="16_ssx8u"]
 [ext_resource type="Script" path="res://Scripts/Shop.gd" id="17_w2r7t"]
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="18_12cql"]
+[ext_resource type="Script" path="res://Scripts/Timer.gd" id="19_lckt3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxsuc"]
 size = Vector2(1146, 8)
@@ -30,10 +31,11 @@ size = Vector2(1146, 8)
 script = ExtResource("1_e0r41")
 
 [node name="LetterBox" type="TextEdit" parent="Letter"]
-offset_left = 63.0
-offset_top = 48.0
-offset_right = 137.0
-offset_bottom = 117.0
+offset_left = 61.0
+offset_top = 44.0
+offset_right = 136.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 40
 
 [node name="LetterLabel" type="Label" parent="Letter"]
 offset_left = 18.0
@@ -143,10 +145,10 @@ shape = SubResource("RectangleShape2D_nxsuc")
 script = ExtResource("17_w2r7t")
 
 [node name="ShopButton" type="Button" parent="Shop"]
-offset_left = 1080.0
-offset_top = 72.0
-offset_right = 1150.0
-offset_bottom = 103.0
+offset_left = 1057.0
+offset_top = 52.0
+offset_right = 1127.0
+offset_bottom = 83.0
 text = "Sklep"
 
 [node name="BackButton" type="Button" parent="Shop"]
@@ -165,6 +167,28 @@ modulate = Color(0.564706, 0.564706, 0.564706, 0.431373)
 position = Vector2(595, 346)
 scale = Vector2(425, 489)
 texture = SubResource("CanvasTexture_nxn8r")
+
+[node name="ExtraTime" type="Label" parent="Shop/ItemList"]
+offset_left = 399.0
+offset_top = 265.0
+offset_right = 527.0
+offset_bottom = 288.0
+text = "Dodatkowy czas"
+
+[node name="Price" type="Label" parent="Shop/ItemList/ExtraTime"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 9.0
+offset_right = 306.0
+offset_bottom = 32.0
+
+[node name="ETBuyButton" type="Button" parent="Shop/ItemList/ExtraTime"]
+layout_mode = 0
+offset_left = 348.0
+offset_top = -6.0
+offset_right = 398.0
+offset_bottom = 25.0
+text = "KUP"
 
 [node name="RandomLetter" type="Label" parent="Shop/ItemList"]
 offset_left = 401.0
@@ -213,15 +237,31 @@ text = "KUP"
 script = ExtResource("18_12cql")
 
 [node name="MoneyLabel" type="Label" parent="Money"]
-offset_left = 988.0
+offset_left = 1045.0
 offset_top = 4.0
 offset_right = 1149.0
 offset_bottom = 49.0
 theme_override_font_sizes/font_size = 20
 
+[node name="Timer" type="Node2D" parent="."]
+script = ExtResource("19_lckt3")
+
+[node name="LetterTimer" type="Timer" parent="Timer"]
+one_shot = true
+
+[node name="TimerLabel" type="Label" parent="Timer"]
+offset_left = 428.0
+offset_top = 2.0
+offset_right = 764.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
 [connection signal="text_changed" from="Letter/LetterBox" to="Letter" method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="End/RestartButton" to="End" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Shop/ShopButton" to="Shop" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="Shop/BackButton" to="Shop" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Shop/ItemList/ExtraTime/ETBuyButton" to="Shop" method="_on_et_buy_button_pressed"]
 [connection signal="pressed" from="Shop/ItemList/RandomLetter/RLBuyButton" to="Shop" method="_on_rl_buy_button_pressed"]
 [connection signal="pressed" from="Shop/ItemList/ExtraLife/ELBuyButton" to="Shop" method="_on_el_buy_button_pressed"]
+[connection signal="timeout" from="Timer/LetterTimer" to="Timer" method="_on_letter_timer_timeout"]

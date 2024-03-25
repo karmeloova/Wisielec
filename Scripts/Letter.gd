@@ -4,6 +4,7 @@ var used_letter = false; #zmienna służąca do oznaczania czy dana literka zost
 
 func _ready():
 	SignalManager.end.connect(_on_end) #podłączamy sygnał mówiący o tym, że gra się zakończyła
+	SignalManager.drawn_letter.connect(_on_drawn_letter) #podłączmy sygnał mówiący o tym, że gracz kupił losową literke
 	$LetterBox.begin_complex_operation();
 
 func _on_text_edit_text_changed():
@@ -33,3 +34,10 @@ func _input(event):
 
 func _on_end(win_or_lose) :
 	$LetterButton.disabled = true; #w momencie gdy gra się zakończyła, ustawiamy przycisk na nieaktywny - dzieki temu nie można wpisywać kolejnych liter
+
+#Funkcja wykonująca się gdy gracz kupi losową literę
+func _on_drawn_letter(letter) :
+	used_letter_tab.append(letter.to_upper()); #Dołączanie wylosowanej litery do liter użytych (w celu żeby gracz nie powtórzył i niepotrzebnie stracił życie)
+	$UsedLettersLabel.text += letter.to_upper() + ", " #Pokazanie graczowi, że ta litera została już użyta
+
+
